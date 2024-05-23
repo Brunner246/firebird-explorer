@@ -1,0 +1,21 @@
+version: '3.12'
+
+services:
+  cw-firebird-db:
+    # need to downgrade the version image: jacobalberty/firebird:latest
+    image: jacobalberty/firebird:2.5-ss
+    environment:
+      - ISC_PASSWORD=masterkey
+    volumes:
+      - ./database/CONTENT_3D.FDB:/firebird/data/CONTENT_3D.FDB
+    ports:
+      - 3050:3050
+
+  python-app:
+    build: 
+      context: ./src
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app
+    depends_on:
+      - cw-firebird-db

@@ -1,5 +1,3 @@
-version: '3.12'
-
 services:
   cw-firebird-db:
     # need to downgrade the version image: jacobalberty/firebird:latest

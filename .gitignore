@@ -1,0 +1,4 @@
+*.FDB
+/.venv/
+/.vscode/
+/.idea/
